@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 const Home = () => {
   const [input, setInput] = useState({
     name: "",
@@ -16,12 +15,17 @@ const Home = () => {
     } else {
       setTable([...table, input]);
     }
+    setInput({
+      name: "",
+      email: "",
+      contactnumber: "",
+    });
   };
 
-  const RemoveItem = (index)=>{
-   const filter = table.filter((tabl, i)=> i !== index)
-   setTable(filter)
-  }
+  const RemoveItem = (index) => {
+    const filter = table.filter((tabl, i) => i !== index);
+    setTable(filter);
+  };
   return (
     <div>
       <div className="mb-3 my-3">
@@ -31,7 +35,6 @@ const Home = () => {
         <input
           type="text"
           value={input.name}
-
           className="form-control"
           id="name"
           name="name"
@@ -85,19 +88,26 @@ const Home = () => {
             <th scope="col">Remove item</th>
           </tr>
         </thead>
-      <tbody>
-      {table.map((tabl, i) => {
-          return (
-            <tr key={i}>
-              <th scope="row">{i + 1}</th>
-              <td>{tabl.name}</td>
-              <td>{tabl.email}</td>
-              <td>{tabl.contactnumber}</td>
-              <td><button className="btn btn-danger" onClick={()=> RemoveItem(i)}>Removeitem</button></td>
-            </tr>
-          );
-        })}
-      </tbody>
+        <tbody>
+          {table.map((tabl, i) => {
+            return (
+              <tr key={i}>
+                <th scope="row">{i + 1}</th>
+                <td>{tabl.name}</td>
+                <td>{tabl.email}</td>
+                <td>{tabl.contactnumber}</td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => RemoveItem(i)}
+                  >
+                    Removeitem
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

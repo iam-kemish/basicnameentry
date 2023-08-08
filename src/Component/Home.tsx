@@ -42,11 +42,11 @@ const Home = () => {
             type="text"
             className="form-control"
             id="name"
-            placeholder="Type your name"
+            placeholder="Type your Fullname"
             {...register("FullName", {
               required: "User's name is required.",
               pattern: {
-                value: /^[A-Za-z\s]+$/,
+                value: /^[A-Za-z]{4,}\s[A-Za-z]{3,}$/,
                 message: "Invalid name format.",
               },
             })}
@@ -61,7 +61,7 @@ const Home = () => {
             Email address:
           </label>
           <input
-            type="email"
+            type="text"
             className="form-control"
             id="email"
             placeholder="Type your valid email"
